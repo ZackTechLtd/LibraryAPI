@@ -1,0 +1,149 @@
+﻿DELIMITER //
+
+CREATE FUNCTION `GenerateString`(passwordlen INT) RETURNS varchar(128) CHARSET utf8mb4
+BEGIN
+
+SET @chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+SET @charLen = length(@chars);
+
+SET @randomPassword = '';
+
+WHILE length(@randomPassword) < passwordlen
+    DO
+    SET @randomPassword = concat(@randomPassword, substring(@chars,CEILING(RAND() * @charLen),1));
+END WHILE;
+
+RETURN @randomPassword;
+END
+
+//
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE TABLE LibraryBook(
+   LibraryBookId INT AUTO_INCREMENT PRIMARY KEY,
+   LibraryBookCode VARCHAR(40) NOT NULL,
+   ISBN VARCHAR(40) NOT NULL,
+   Title VARCHAR(100) NOT NULL,
+   Author VARCHAR(255) NOT NULL,
+   IsStolen BOOLEAN NULL,
+   IsLost BOOLEAN NULL,
+   CopyNumber INT NOT NULL,
+   CreatedBy VARCHAR(255) NOT NULL,
+   DateCreated datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   ModifiedBy VARCHAR(255) NOT NULL,
+   DateModified datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER before_insert_LibraryBook
+BEFORE INSERT ON LibraryBook
+FOR EACH ROW
+  IF LibraryBookCode IS NULL
+  THEN
+    SET LibraryBookCode = GenerateString(9);
+  END IF;
+
+
+//
+
+DELIMITER //
+
+CREATE TABLE LibraryUser(
+   LibraryUserId INT AUTO_INCREMENT PRIMARY KEY,
+   LibraryUserCode VARCHAR(40) NOT NULL,
+   Title VARCHAR(10) NOT NULL,
+   Name VARCHAR(250) NOT NULL,
+   PhoneNumber VARCHAR(25) NULL,
+   MobilePhoneNumber VARCHAR(25) NULL,
+   Email VARCHAR(256) NULL,
+   AlternativePhoneNumber VARCHAR(25) NULL,
+   AlternativeEmail VARCHAR(256) NULL,
+   AddressLine1 VARCHAR(256) NOT NULL,
+   AddressLine2 VARCHAR(256) NULL,
+   AddressLine3 VARCHAR(256) NULL,
+   City VARCHAR(100) NULL,
+   County VARCHAR(100) NULL,
+   Country VARCHAR(100) NULL,
+   Postcode VARCHAR(20),        
+   GDPRInformedDate datetime NULL,
+   GDPRInformedBy VARCHAR(250) NULL,
+   GDPRHowInformed VARCHAR(250) NULL,
+   GDPRNotes TEXT NULL,
+   LibraryUserByPost BOOL NULL,
+   LibraryUserByPostConsentDate DATETIME NULL,
+   LibraryUserByEmail BOOL NULL,
+   LibraryUserByEmailConsentDate DATETIME NULL,
+   LibraryUserByPhone BOOL NULL,
+   LibraryUserByPhoneConsentDate DATETIME NULL,
+   LibraryUserBySMS BOOL NULL,
+   LibraryUserBySMSConsentDate DATETIME NULL,
+   CreatedBy VARCHAR(255) NOT NULL,
+   DateCreated datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   ModifiedBy VARCHAR(255) NOT NULL,
+   DateModified datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER before_insert_LibraryUser
+BEFORE INSERT ON LibraryUser
+FOR EACH ROW
+  IF LibraryUserCode IS NULL
+  THEN
+    SET LibraryUserCode = GenerateString(9);
+  END IF;
+
+
+//
+
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE TABLE LibraryBookStatus(
+   LibraryBookStatusId INT AUTO_INCREMENT PRIMARY KEY,
+   LibraryBookStatusCode VARCHAR(40) NOT NULL,
+   LibraryBookId INT NOT NULL,
+   LibraryBookUserId INT NOT NULL,
+   DateCheckedOut DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   DateReturned DATETIME NULL,
+   CreatedBy VARCHAR(255) NOT NULL,
+   DateCreated datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   ModifiedBy VARCHAR(255) NOT NULL,
+   DateModified datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TRIGGER before_insert_LibraryBookStatus
+BEFORE INSERT ON LibraryBookStatus
+FOR EACH ROW
+  IF LibraryBookStatusCode IS NULL
+  THEN
+    SET LibraryBookStatusCode = GenerateString(9);
+  END IF;
+
+
+//
+
+
+DELIMITER ;
+
+DELIMITER //
+
+ALTER TABLE LibraryBookStatus ADD CONSTRAINT fk_LibraryBookStatus_LibraryBook
+     FOREIGN KEY (LibraryBookId) REFERENCES LibraryBook (LibraryBookId)
+     ON UPDATE NO ACTION
+	 ON DELETE NO ACTION;
+ALTER TABLE LibraryBookStatus ADD CONSTRAINT fk_LibraryBookStatus_LibraryBookUser
+     FOREIGN KEY (LibraryBookStatusId) REFERENCES LibraryBookStatus (LibraryBookStatusId)
+     ON UPDATE NO ACTION
+	 ON DELETE NO ACTION;
+//
+
+
+DELIMITER ;
+
+INSERT INTO LibraryBook (LibraryBookCode, ISBN, Title, Author, IsStolen, IsLost, CopyNumber, CreatedBy, ModifiedBy) 
+VALUES ( 'ABC', '1-56592-515-7', 'Web Design in a Nutshell', 'Jenifer Niederst', 0, 0, 1,'Test', 'Test');

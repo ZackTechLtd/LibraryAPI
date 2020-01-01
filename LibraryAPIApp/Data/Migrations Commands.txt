@@ -1,0 +1,8 @@
+﻿update-database -ConfigurationTypeName OrionWebSuite.DB.DataContexts.IdentityMigrations.Configuration -TargetMigration:0
+enable-migrations -ContextTypeName IdentityDb -MigrationsDirectory DataContexts\IdentityMigrations
+add-migration -ConfigurationTypeName OrionWebSuite.DB.DataContexts.IdentityMigrations.Configuration "InitialCreate"
+update-database -ConfigurationTypeName OrionWebSuite.DB.DataContexts.IdentityMigrations.Configuration
+
+
+
+
