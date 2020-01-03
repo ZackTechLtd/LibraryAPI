@@ -72,10 +72,10 @@ namespace LibraryAPIApp.Controllers
                 {
                     //return Ok(GenerateJWT(user));
                     
-                    tb = _jwtTokenBuilder.AddSecurityKey(JwtSecurityKey.Create("ZackTech-secret-key"))
+                    tb = _jwtTokenBuilder.AddSecurityKey(JwtSecurityKey.Create("ZackTechSecretKey"))
                                 .AddSubject(inputModel.Username)
-                                    .AddIssuer("ZackTech.Security.Bearer")
-                                    .AddAudience("ZackTech.Security.Bearer")
+                                    .AddIssuer("ZackTechSecurityBearer")
+                                    .AddAudience("ZackTechSecurityBearer")
                                     //.AddClaim(JwtRegisteredClaimNames.Sub, user.UserName)
                                     .AddClaim("AdministratorId", "")
                                     //.AddClaim("SeniorLibrarianId", "333")
@@ -85,10 +85,10 @@ namespace LibraryAPIApp.Controllers
                 }
                 else
                 {
-                    tb = _jwtTokenBuilder.AddSecurityKey(JwtSecurityKey.Create("ZackTech-secret-key"))
+                    tb = _jwtTokenBuilder.AddSecurityKey(JwtSecurityKey.Create("ZackTechSecretKey"))
                                 .AddSubject(inputModel.Username)
-                                    .AddIssuer("ZackTech.Security.Bearer")
-                                    .AddAudience("ZackTech.Security.Bearer")
+                                    .AddIssuer("ZackTechSecurityBearer")
+                                    .AddAudience("ZackTechSecurityBearer")
                                     //.AddClaim(JwtRegisteredClaimNames.Sub, user.UserName)
                                     .AddClaim("MembershipId", "111")
                                     .AddExpiry(defaultTimeout);
@@ -138,8 +138,8 @@ namespace LibraryAPIApp.Controllers
             };
 
             var token = new JwtSecurityToken(
-                issuer: "ZackTech.Security.Bearer",
-                audience: "ZackTech.Security.Bearer",
+                issuer: "ZackTechSecurityBearer",
+                audience: "ZackTechSecurityBearer",
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: credentials

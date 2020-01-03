@@ -67,9 +67,9 @@ namespace LibraryAPIApp
                             ValidateIssuerSigningKey = true,
                             ClockSkew = TimeSpan.Zero,
 
-                            ValidIssuer = "ZackTech.Security.Bearer",
-                            ValidAudience = "ZackTech.Security.Bearer",
-                            IssuerSigningKey = JwtSecurityKey.Create("ZackTech-secret-key")
+                            ValidIssuer = "ZackTechSecurityBearer",
+                            ValidAudience = "ZackTechSecurityBearer",
+                            IssuerSigningKey = JwtSecurityKey.Create("ZackTechSecretKey")
                         };
 
                         options.Events = new JwtBearerEvents

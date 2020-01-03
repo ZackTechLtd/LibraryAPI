@@ -31,7 +31,7 @@ namespace LibraryAPIApp.Controllers
 
             if (librarybook == null)
             {
-                ModelState.AddModelError(string.Empty, "Unknown user code");
+                ModelState.AddModelError(string.Empty, "Unknown book code");
                 return BadRequest(ModelState);
             }
 
