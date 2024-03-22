@@ -1,0 +1,353 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryAPIApp.UnitTests.csproj": {}
+  },
+  "projects": {
+    "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/Common.csproj",
+        "projectName": "Common",
+        "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/Common.csproj",
+        "packagesPath": "/Users/martinbelton/.nuget/packages/",
+        "outputPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/martinbelton/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.314/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/DataAccess/DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/DataAccess/DataAccess.csproj",
+        "projectName": "DataAccess",
+        "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/DataAccess/DataAccess.csproj",
+        "packagesPath": "/Users/martinbelton/.nuget/packages/",
+        "outputPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/DataAccess/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/martinbelton/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/Common.csproj": {
+                "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.30, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[0.61.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.314/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryAPIApp.UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryAPIApp.UnitTests.csproj",
+        "projectName": "LibraryAPIApp.UnitTests",
+        "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryAPIApp.UnitTests.csproj",
+        "packagesPath": "/Users/martinbelton/.nuget/packages/",
+        "outputPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/martinbelton/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/LibraryAPIApp.csproj": {
+                "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/LibraryAPIApp.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.12.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.314/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/LibraryAPIApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/LibraryAPIApp.csproj",
+        "projectName": "LibraryAPIApp",
+        "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/LibraryAPIApp.csproj",
+        "packagesPath": "/Users/martinbelton/.nuget/packages/",
+        "outputPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/martinbelton/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/sdk/7.0.314/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/Common.csproj": {
+                "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/Common/Common.csproj"
+              },
+              "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/DataAccess/DataAccess.csproj": {
+                "projectPath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/DataAccess/DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[5.6.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.314/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

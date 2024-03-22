@@ -1,0 +1,60 @@
+﻿<Properties StartupConfiguration="{86AD718F-13C7-46DB-AFFE-406E59DCE61C}|Default" GitUserInfo="UsingMD">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="17" column="9" />
+    <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="35" column="9" />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="LibraryAPIApp/Controllers/BaseController.cs">
+    <Files>
+      <File FileName="LibraryAPIApp/Controllers/LibraryBookController.cs" Line="61" Column="60" />
+      <File FileName="LibraryAPIApp.UnitTests/UnitTest1.cs" Line="45" Column="1" />
+      <File FileName="DataAccess/WebApiManager/Interfaces/ILibraryBookWebApiManager.cs" Line="33" Column="108" />
+      <File FileName="DataAccess/WebApiRepository/Interfaces/ILibraryBookRepository.cs" Line="32" Column="1" />
+      <File FileName="DataAccess/WebApiRepository/Interfaces/ILibraryBookStatusRepository.cs" Line="39" Column="1" />
+      <File FileName="LibraryAPIApp/Controllers/BaseController.cs" Line="13" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="LibraryAPIApp" expanded="True">
+            <Node name="DataAccess">
+              <Node name="WebApiManager" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+              </Node>
+              <Node name="WebApiRepository" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="LibraryAPIApp">
+              <Node name="Controllers" expanded="True">
+                <Node name="BaseController.cs" selected="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+            <Node name="LibraryAPIApp.UnitTests">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="LibraryAPIApp">
+            <Node name="LibraryAPIApp.UnitTests">
+              <Node name="LibraryAPIApp.UnitTests">
+                <Node name="LibraryBookControllerTests">
+                  <Node name="Insert_Returns_OkResult_When_Successfully_Inserted - 5382829b-c2d1-50d5-4e3a-4895217a4dc9" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.LibraryAPIApp PreferredExecutionTarget="/Applications/Safari.app" />
+</Properties>

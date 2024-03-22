@@ -101,6 +101,9 @@ namespace LibraryAPIApp
 
             });
 
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+
             services.AddControllers();
         }
 
@@ -111,6 +114,14 @@ namespace LibraryAPIApp
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Configure the HTTP request pipeline.
+            if (env.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
 
             app.UseHttpsRedirection();
 
