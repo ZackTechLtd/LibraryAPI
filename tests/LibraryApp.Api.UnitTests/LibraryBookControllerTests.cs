@@ -15,7 +15,7 @@ using System.Text;
 
 namespace LibraryApp.Api.UnitTests;
 
-public class LibraryBookControllerTests
+public class LibraryBookControllerTests : BaseTests
 {
     [Fact]
     public void Get_Returns_OkResult_When_Book_Exists()
@@ -48,25 +48,10 @@ public class LibraryBookControllerTests
         var fakeLibraryBookCode = "fakeCode";
         mockManager.Setup(m => m.InsertLibraryBook(It.IsAny<LibraryBookApiModel>(), out fakeLibraryBookCode, It.IsAny<TransactionParam>())).Returns(1);
 
-        // Creating Bearer Token
-        var token = CreateBearerToken("role");
-
-        // Set up HttpClient with Bearer token
-        var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-        // Act
-        var request = new HttpRequestMessage(HttpMethod.Post, "your_api_endpoint_here");
-        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        HttpRequestMessage request = AddAuthorisation("role", controller);
         request.Content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
 
-        // Set Authorization header in controller context
-        controller.ControllerContext = new ControllerContext
-        {
-            HttpContext = new DefaultHttpContext()
-        };
-        controller.ControllerContext.HttpContext.Request.Headers["Authorization"] = "Bearer " + token;
-
+        //Act
         var result = controller.Insert(model);
 
         // Assert
@@ -106,25 +91,10 @@ public class LibraryBookControllerTests
 
         mockManager.Setup(m => m.UpdateLibraryBook(It.IsAny<LibraryBookApiModel>(), It.IsAny<TransactionParam>())).Returns(1);
 
-        // Creating Bearer Token
-        var token = CreateBearerToken("role");
-
-        // Set up HttpClient with Bearer token
-        var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-        // Act
-        var request = new HttpRequestMessage(HttpMethod.Put, "your_api_endpoint_here");
-        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        HttpRequestMessage request = AddAuthorisation("role", controller);
         request.Content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
 
-        // Set Authorization header in controller context
-        controller.ControllerContext = new ControllerContext
-        {
-            HttpContext = new DefaultHttpContext()
-        };
-        controller.ControllerContext.HttpContext.Request.Headers["Authorization"] = "Bearer " + token;
-
+        //Act
         OkResult result = (OkResult)controller.Update(model);
 
         // Assert
@@ -146,25 +116,6 @@ public class LibraryBookControllerTests
 
         // Assert
         result.Should().BeOfType<BadRequestObjectResult>();
-    }
-
-    public static string CreateBearerToken(string role)
-    {
-        var BearerTokenSigningKey = "StubPrivateKey123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var claims = new List<System.Security.Claims.Claim> { new System.Security.Claims.Claim("role", role) };
-        var identity = new ClaimsIdentity(claims, "Test");
-        var user = new ClaimsPrincipal(identity);
-
-        var key = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(BearerTokenSigningKey));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
-
-        var token = new JwtSecurityToken(
-            claims: user.Claims,
-            signingCredentials: creds,
-            expires: DateTime.UtcNow.AddMinutes(5)
-            );
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
 }
