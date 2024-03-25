@@ -1,17 +1,12 @@
-﻿using Common.Models.Api;
+﻿using System.Text;
+using Common.Models.Api;
 using FluentAssertions;
 using LibraryApp.Api.Controllers;
-using LibraryApp.WebApiManager.Infrastructure.Interfaces;
 using LibraryApp.Infrastructure.Helper;
-using Microsoft.AspNetCore.Http;
+using LibraryApp.WebApiManager.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using Moq;
 using Newtonsoft.Json;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Headers;
-using System.Security.Claims;
-using System.Text;
 
 namespace LibraryApp.Api.UnitTests;
 
