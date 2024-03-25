@@ -3,41 +3,30 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="17" column="9" />
-    <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="35" column="9" />
+    <BreakpointStore>
+      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="24" column="9" />
+      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/Controllers/LibraryBookController.cs" relfile="LibraryAPIApp/Controllers/LibraryBookController.cs" line="48" column="13" />
+      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="42" column="9" />
+      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="98" column="9" />
+      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp/Controllers/LibraryBookController.cs" relfile="LibraryAPIApp/Controllers/LibraryBookController.cs" line="86" column="13" />
+      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" relfile="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" line="128" column="9" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="LibraryAPIApp/Controllers/BaseController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs">
     <Files>
-      <File FileName="LibraryAPIApp/Controllers/LibraryBookController.cs" Line="61" Column="60" />
-      <File FileName="LibraryAPIApp.UnitTests/UnitTest1.cs" Line="45" Column="1" />
-      <File FileName="DataAccess/WebApiManager/Interfaces/ILibraryBookWebApiManager.cs" Line="33" Column="108" />
-      <File FileName="DataAccess/WebApiRepository/Interfaces/ILibraryBookRepository.cs" Line="32" Column="1" />
-      <File FileName="DataAccess/WebApiRepository/Interfaces/ILibraryBookStatusRepository.cs" Line="39" Column="1" />
-      <File FileName="LibraryAPIApp/Controllers/BaseController.cs" Line="13" Column="1" />
+      <File FileName="LibraryAPIApp/Controllers/LibraryBookController.cs" Line="106" Column="1" />
+      <File FileName="LibraryAPIApp/Controllers/BaseController.cs" Line="13" Column="67" />
+      <File FileName="LibraryAPIApp.UnitTests/LibraryBookControllerTests.cs" Line="141" Column="60" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="LibraryAPIApp" expanded="True">
-            <Node name="DataAccess">
-              <Node name="WebApiManager" expanded="True">
-                <Node name="Interfaces" expanded="True" />
-              </Node>
-              <Node name="WebApiRepository" expanded="True">
-                <Node name="Interfaces" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="LibraryAPIApp">
-              <Node name="Controllers" expanded="True">
-                <Node name="BaseController.cs" selected="True" />
-              </Node>
+          <Node name="LibraryAPIApp" expanded="True" selected="True">
+            <Node name="LibraryAPIApp" expanded="True">
+              <Node name="Controllers" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
-            <Node name="LibraryAPIApp.UnitTests">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-            </Node>
+            <Node name="LibraryAPIApp.UnitTests" expanded="True" />
           </Node>
         </State>
       </Pad>
