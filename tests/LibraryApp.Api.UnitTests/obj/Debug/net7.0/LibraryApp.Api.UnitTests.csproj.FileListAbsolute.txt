@@ -243,14 +243,14 @@
 /Users/martinbelton/VS2019/Projects/LibraryApp/tests/LibraryApp.Api.UnitTests/obj/Debug/net7.0/LibraryApp.Api.UnitTests.genruntimeconfig.cache
 /Users/martinbelton/VS2019/Projects/LibraryApp/tests/LibraryApp.Api.UnitTests/obj/Debug/net7.0/ref/LibraryApp.Api.UnitTests.dll
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/CoverletSourceRootsMapping
+/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api.deps.json
+/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api.runtimeconfig.json
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/appsettings.Development.json
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/appsettings.json
+/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/xunit.runner.reporters.netcoreapp10.dll
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/xunit.runner.utility.netcoreapp10.dll
-/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api.deps.json
-/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api.runtimeconfig.json
-/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api.UnitTests.deps.json
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api.UnitTests.runtimeconfig.json
 /Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/bin/Debug/net7.0/LibraryApp.Api.UnitTests.dll

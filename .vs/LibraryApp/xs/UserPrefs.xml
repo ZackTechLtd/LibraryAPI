@@ -1,51 +1,42 @@
 ﻿<Properties StartupConfiguration="{E18901E9-2D8D-4DEC-A6B4-A3F9C9C325CE}|https">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" relfile="tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" line="22" column="9" />
-      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/src/LibraryApp.Api/Controllers/LibraryBookStatusController.cs" relfile="src/LibraryApp.Api/Controllers/LibraryBookStatusController.cs" line="48" column="9" />
-      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" relfile="tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" line="76" column="9" />
-      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" relfile="tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" line="110" column="9" />
-      <Breakpoint file="/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" relfile="tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" line="166" column="9" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.src.LibraryApp.Api PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../.microsoft/usersecrets/a51bb98d-11ba-4000-977f-5e7d0472fdad/secrets.json">
     <Files>
-      <File FileName="tests/LibraryApp.Api.UnitTests/LibraryBookControllerTests.cs" Line="16" Column="56" />
-      <File FileName="src/LibraryApp.Api/Controllers/LibraryBookStatusController.cs" Line="100" Column="1" />
-      <File FileName="tests/LibraryApp.Api.UnitTests/LibraryBookStatusControllerTests.cs" Line="166" Column="32" />
-      <File FileName="src/LibraryApp.Api/Controllers/BaseController.cs" Line="12" Column="1" />
+      <File FileName="src/LibraryApp.Core/Util/JwtTokenBuilder.cs" />
+      <File FileName="tests/LibraryApp.Api.UnitTests/JwtTokenBuilderTests.cs" Line="12" Column="50" />
+      <File FileName="src/LibraryApp.Core/Util/JwtToken.cs" />
+      <File FileName="tests/LibraryApp.Api.UnitTests/BaseTests.cs" />
+      <File FileName="src/LibraryApp.Infrastructure/Repository/IdentityDb.cs" Line="11" Column="36" />
+      <File FileName="src/LibraryApp.Infrastructure/LibraryApp.Infrastructure.csproj" Line="24" Column="15" />
+      <File FileName="../../../.microsoft/usersecrets/a51bb98d-11ba-4000-977f-5e7d0472fdad/secrets.json" Line="20" Column="24" />
+      <File FileName="src/LibraryApp.Api/appsettings.json" Line="2" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="LibraryApp">
+          <Node name="LibraryApp" expanded="True">
             <Node name="src" expanded="True">
-              <Node name="LibraryApp.Api" expanded="True">
-                <Node name="Controllers" expanded="True" />
+              <Node name="LibraryApp.Api">
+                <Node name="appsettings.json" selected="True" />
               </Node>
-            </Node>
-            <Node name="tests">
-              <Node name="LibraryApp.Api.UnitTests">
-                <Node name="LibraryBookStatusControllerTests.cs" selected="True" />
+              <Node name="LibraryApp.Core">
+                <Node name="Util" expanded="True" />
               </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="LibraryApp">
-            <Node name="tests">
-              <Node name="LibraryApp.Api.UnitTests" expanded="True">
-                <Node name="LibraryApp.Api.UnitTests" expanded="True">
-                  <Node name="LibraryBookControllerTests" expanded="True" />
-                  <Node name="LibraryBookStatusControllerTests" expanded="True" />
+              <Node name="LibraryApp.Infrastructure">
+                <Node name="Dependencies" expanded="True">
+                  <Node name="PackageDependencies" expanded="True" />
                 </Node>
+                <Node name="Identity" expanded="True" />
+                <Node name="Migrations" expanded="True" />
+                <Node name="Repository" expanded="True" />
               </Node>
             </Node>
+            <Node name="tests" expanded="True" />
           </Node>
         </State>
       </Pad>

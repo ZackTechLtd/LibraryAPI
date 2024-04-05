@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IP8JSq6dv1U56LPauLPhT/hpgxtAK6bMxTqrWcBLpqRvffhDLwPlTEiKZkIbz2SUhJexnRzTVl89x4J+7vhz7w==",
+  "dgSpecHash": "JXNhbqdQn7xBA1PZambHpV/l5cAp9CKQfZAxq7bnYcphbSc9r0VH3NSeRXpcQVZzUiu2RAQh9d+agq80jueIIA==",
   "success": true,
   "projectFilePath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/src/LibraryApp.Infrastructure/LibraryApp.Infrastructure.csproj",
   "expectedPackageFiles": [

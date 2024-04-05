@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P2VWA6oeRpfzkmPdeg7PO1CUaXwfH9MQybE4nPFbGU199JBqydF/rp2dAC694CGr7iH+01d6+NOii5DV+k0y3A==",
+  "dgSpecHash": "vKBMxlUqdl2nKJRzWG8QOiteIHVWwOAlqTpaCfeUY3a6PQbOJ9EnqTgWXL7vGoDr/XsYaJUlz3hvBU3xde2pEg==",
   "success": true,
   "projectFilePath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/tests/LibraryApp.Api.UnitTests/LibraryApp.Api.UnitTests.csproj",
   "expectedPackageFiles": [

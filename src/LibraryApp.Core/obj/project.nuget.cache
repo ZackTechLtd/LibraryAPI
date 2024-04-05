@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RUarJ1urwRHGpH7MFbDSwT28NZE/jZ67lZyxE7qlD4QCTFOKEODc12H7y8n3jZoItFn8m4HabApgK30zQqzSCA==",
+  "dgSpecHash": "dbcaXAmf4lqZ0zZF6ngt/AF8kU2wxxpLdfSXXZPyuY83RmotaFzf3OCFYvegZfhkytgjJHB2RkSYOL0UxZquTg==",
   "success": true,
   "projectFilePath": "/Users/martinbelton/VS2019/TestProjects/LibraryAPI/src/LibraryApp.Core/LibraryApp.Core.csproj",
   "expectedPackageFiles": [
