@@ -1,0 +1,78 @@
+## .NET build artifacts
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider / ReSharper
+.idea/
+*.sln.iml
+_ReSharper*/
+_ReSharper.Caches/
+
+## Visual Studio code
+.vscode/
+vs-code.settings.json
+
+## Visual Studio
+.vs/
+*.user
+
+## Test results
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+coverage/
+coverage.json
+*.lcov
+
+## NuGet
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+## Local / sensitive config - never commit
+appsettings.local.json
+secrets.json
+.env
+.env.*
+!*.env.example
+
+## Logs
+*.log
+logs/
+log/
+tmp/
+
+## Other generated files
+*.userprefs
+TestResult*.xml
+*.swp
+*~
+*.bak
+.ioni.json
+
+## Keep empty dirs structure
+!.gitkeep

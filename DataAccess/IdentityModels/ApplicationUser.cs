@@ -28,6 +28,16 @@ namespace DataAccess.IdentityModels
         public DateTime LastPasswordChangedDate { get; set; }
 
         /// <summary>
+        /// The Company the user belongs to (legacy column, restored so Dapper queries resolve).
+        /// </summary>
+        public int? CompanyId { get; set; }
+
+        /// <summary>
+        /// The Branch the user belongs to (legacy column, restored so Dapper queries resolve).
+        /// </summary>
+        public int? BranchId { get; set; }
+
+        /// <summary>
         /// PreviousUserPasswords
         /// </summary>
         public virtual IList<PreviousPassword> PreviousUserPasswords { get; set; }

@@ -432,15 +432,24 @@ namespace DataAccess.WebApiRepository.Repository
                 var parameters = new { userName };
 
                 IEnumerable<Role> roles = null;
-
-                string aspNetUsers = " [Identity].AspNetUsers ";
-                
+string aspNetUsers = " [Identity].AspNetUsers ";
+                if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+                {
+                    aspNetUsers = " AspNetUsers ";
+                }
 
                 string aspNetUserRoles = " [Identity].AspNetUserRoles ";
-                
+                if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+                {
+                    aspNetUserRoles = " AspNetUserRoles ";
+                }
 
                 string aspNetRoles = " [Identity].AspNetRoles ";
-                
+                if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+                {
+                    aspNetRoles = " AspNetRoles ";
+                }
+
 
                 string sql = string.Format(@"SELECT  R.Id As 'RoleId', R.Name As 'RoleName', U.UserName As 'UserName', U.Email As 'EmailAddress', U.PhoneNumber As 'PhoneNumber', U.LockoutEnabled As 'LockoutEnabled', U.LockoutEnd As 'LockoutEnd', B.BranchCode As 'BranchCode'
                         FROM {0} R
@@ -474,12 +483,18 @@ namespace DataAccess.WebApiRepository.Repository
         /// <returns>The <see cref="userName"/> </returns>
         public virtual IEnumerable<Claim> GetUserAndClaimsByUserName(string userName)
         {
-
-            string aspNetUsers = " [Identity].AspNetUsers ";
-            
+string aspNetUsers = " [Identity].AspNetUsers ";
+            if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                aspNetUsers = " AspNetUsers ";
+            }
 
             string aspNetUserClaims = " [Identity].AspNetUserClaims ";
-            
+            if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                aspNetUserClaims = " AspNetUserClaims ";
+            }
+
 
             var parameters = new { userName };
 
@@ -937,16 +952,32 @@ namespace DataAccess.WebApiRepository.Repository
                 return 0;
 
             string previousPassword = " [Identity].PreviousPassword ";
-            
+            if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                previousPassword = " PreviousPassword ";
+            }
+
 
             string aspNetUserRoles = " [Identity].AspNetUserRoles ";
-            
+            if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                aspNetUserRoles = " AspNetUserRoles ";
+            }
+
 
             string aspNetUserClaims = " [Identity].AspNetUserClaims ";
-            
+            if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                aspNetUserClaims = " AspNetUserClaims ";
+            }
+
 
             string aspNetUserLogins = " [Identity].AspNetUserLogins ";
-            
+            if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                aspNetUserLogins = " AspNetUserLogins ";
+            }
+
 
             string aspNetUsers = " [Identity].AspNetUsers ";
             if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
@@ -1086,6 +1117,12 @@ namespace DataAccess.WebApiRepository.Repository
 
         protected virtual (int companyId, int branchId) GetUsersCompanyAndBranchId(string userName)
         {
+            string aspNetUsers = " [Identity].AspNetUsers ";
+            if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                aspNetUsers = " AspNetUsers ";
+            }
+
             using (IDbConnection connection = this.OpenConnection())
             {
                 var parameters = new DynamicParameters();
@@ -1096,7 +1133,7 @@ namespace DataAccess.WebApiRepository.Repository
                     CompanyId = default(int),
                     BranchId = default(int)
 
-                }, "SELECT CompanyId, BranchId FROM [Identity].[AspNetUsers] WHERE UserName = @userName", parameters).FirstOrDefault();
+                }, $"SELECT CompanyId, BranchId FROM {aspNetUsers} WHERE UserName = @userName", parameters).FirstOrDefault();
 
                 if (data == null)
                 {

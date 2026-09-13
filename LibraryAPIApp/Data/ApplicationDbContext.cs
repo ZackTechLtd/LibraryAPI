@@ -1,55 +1,15 @@
 ﻿using DataAccess.IdentityModels;
-using LibraryAPIApp.Util;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace LibraryAPIApp.Data
 {
     public class IdentityDb : IdentityDbContext<ApplicationUser>
     {
-        //private readonly IOptions<ApiConfiguration> _apiConfiguration;
-        public IdentityDb() { }
-
         public IdentityDb(DbContextOptions<IdentityDb> options)
             : base(options)
         {
-            
         }
-
-        //public IdentityDb(DbContextOptions<IdentityDb> options, IOptions<ApiConfiguration> apiConfiguration)
-        //    : base(options)
-        //{
-        //    _apiConfiguration = apiConfiguration;
-        //}
-
-        public IdentityDb Create()
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<IdentityDb>();
-            optionsBuilder.UseMySql(GetConnectionString());
-
-            return new IdentityDb(optionsBuilder.Options);
-        }
-
-        
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySql(GetConnectionString());       
-        }
-
-        private string GetConnectionString()
-        {
-            IConfiguration config = ServiceLocator.Current.GetInstance<IConfiguration>();
-            if (config == null)
-            {
-                return string.Empty;
-            }
-            else
-            {
-                return config.GetConnectionString("DefaultConnection");
-            }
-        }
-        
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -57,20 +17,45 @@ namespace LibraryAPIApp.Data
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
-            //if (string.Equals(_apiConfiguration.Value.RDBMS, "MySQL", StringComparison.OrdinalIgnoreCase) || string.Equals(_apiConfiguration.Value.RDBMS, "Postgres", StringComparison.OrdinalIgnoreCase))
-            //{
-            //Do Nothing
-            //}
-            //else
-            //{
-            //    builder.HasDefaultSchema("Identity");
-            //}
 
             builder.Entity<PreviousPassword>()
             .HasKey(c => new { c.PasswordHash, c.UserId });
+
+            // Legacy schema (restored so legacy UserRepository queries resolve)
+            builder.Entity<Company>()
+                .ToTable("Company")
+                .HasIndex(c => c.CompanyCode)
+                .IsUnique();
+
+            builder.Entity<Branch>()
+                .ToTable("Branch")
+                .HasIndex(b => b.BranchCode)
+                .IsUnique();
+
+            builder.Entity<Branch>()
+                .HasOne(b => b.Company)
+                .WithMany(c => c.Branches)
+                .HasForeignKey(b => b.CompanyId);
+
+            builder.Entity<LastUserCompanyAndBranch>()
+                .ToTable("LastUserCompanyAndBranch")
+                .HasKey(x => x.LastUserCompanyAndBranchId);
         }
 
-            
+        /// <summary>
+        /// Companies (legacy schema restored)
+        /// </summary>
+        public DbSet<Company> Companies { get; set; }
+
+        /// <summary>
+        /// Branches (legacy schema restored)
+        /// </summary>
+        public DbSet<Branch> Branches { get; set; }
+
+        /// <summary>
+        /// Last Company and Branch per user (legacy schema restored)
+        /// </summary>
+        public DbSet<LastUserCompanyAndBranch> LastUserCompanyAndBranches { get; set; }
 
         /// <summary>
         /// Update Model Item and save changes
