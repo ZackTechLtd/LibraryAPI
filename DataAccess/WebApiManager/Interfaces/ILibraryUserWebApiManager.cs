@@ -4,7 +4,6 @@ namespace DataAccess.WebApiManager.Interfaces
 {
     using Common.Models;
     using Common.Models.Api;
-    using System.Collections.Generic;
 
 
     public interface ILibraryUserWebApiManager

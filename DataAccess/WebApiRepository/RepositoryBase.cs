@@ -7,14 +7,13 @@ namespace DataAccess.WebApiRepository
     using System.Text;
     using Common.Models.Configuration;
     using System.Data;
-    using System.Data.SqlClient;
     using Dapper;
     using Microsoft.Extensions.Configuration;
     using Common.Configuration;
     using Microsoft.Extensions.Options;
     using System.Linq;
     using Microsoft.Data.SqlClient;
-    using MySql.Data.MySqlClient;
+    using MySqlConnector;
 
     public abstract class RepositoryBase
     {

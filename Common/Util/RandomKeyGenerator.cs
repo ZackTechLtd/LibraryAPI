@@ -20,16 +20,10 @@ namespace Common.Util
     {
         public string GetUniqueKey(int maxSize)
         {
-            char[] chars = new char[62];
-            chars =
+            char[] chars =
             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
-            byte[] data = new byte[1];
-            using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
-            {
-                crypto.GetNonZeroBytes(data);
-                data = new byte[maxSize];
-                crypto.GetNonZeroBytes(data);
-            }
+            byte[] data = new byte[maxSize];
+            RandomNumberGenerator.Fill(data);
             StringBuilder result = new StringBuilder(maxSize);
             foreach (byte b in data)
             {

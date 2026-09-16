@@ -11,12 +11,8 @@ namespace LibraryAPIApp.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using System;
-    using System.Threading.Tasks;
     using System.Linq;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
-    using Microsoft.IdentityModel.Tokens;
-    using System.Text;
+    using System.Threading.Tasks;
 
     [AllowAnonymous]
     [Route("api/[controller]")]
@@ -66,32 +62,22 @@ namespace LibraryAPIApp.Controllers
 
                 var roles = await _userManager.GetRolesAsync(user);
 
-                IJwtTokenBuilder tb = null;
+                IJwtTokenBuilder tb;
 
-                if (roles.Where(x => x == "Administrator").Count() > 0)
+                if (roles.Count(r => r == "Administrator") > 0)
                 {
-                    //return Ok(GenerateJWT(user));
-                    
-                    tb = _jwtTokenBuilder.AddSecurityKey(JwtSecurityKey.Create("ZackTechSecretKey"))
+                    tb = _jwtTokenBuilder
                                 .AddSubject(inputModel.Username)
-                                    .AddIssuer("ZackTechSecurityBearer")
-                                    .AddAudience("ZackTechSecurityBearer")
-                                    //.AddClaim(JwtRegisteredClaimNames.Sub, user.UserName)
-                                    .AddClaim("AdministratorId", "")
-                                    //.AddClaim("SeniorLibrarianId", "333")
-                                    .AddClaim("MembershipId", "111")
-                                    .AddExpiry(defaultTimeout);
-                                    
+                                .AddClaim("AdministratorId", "")
+                                .AddClaim("MembershipId", "111")
+                                .AddExpiry(defaultTimeout);
                 }
                 else
                 {
-                    tb = _jwtTokenBuilder.AddSecurityKey(JwtSecurityKey.Create("ZackTechSecretKey"))
+                    tb = _jwtTokenBuilder
                                 .AddSubject(inputModel.Username)
-                                    .AddIssuer("ZackTechSecurityBearer")
-                                    .AddAudience("ZackTechSecurityBearer")
-                                    //.AddClaim(JwtRegisteredClaimNames.Sub, user.UserName)
-                                    .AddClaim("MembershipId", "111")
-                                    .AddExpiry(defaultTimeout);
+                                .AddClaim("MembershipId", "111")
+                                .AddExpiry(defaultTimeout);
                 }
 
                 foreach (var claim in userclaims)
@@ -123,30 +109,5 @@ namespace LibraryAPIApp.Controllers
             return Ok();
 
         }
-        /*
-        string GenerateJWT(ApplicationUser userInfo)
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ZackTech-secret-key"));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var claims = new[]
-            {
-                new System.Security.Claims.Claim(JwtRegisteredClaimNames.Sub, userInfo.UserName),
-                new System.Security.Claims.Claim("AdministratorId", ""),
-                new System.Security.Claims.Claim("MembershipId",""),
-                new System.Security.Claims.Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            };
-
-            var token = new JwtSecurityToken(
-                issuer: "ZackTechSecurityBearer",
-                audience: "ZackTechSecurityBearer",
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
-                signingCredentials: credentials
-            );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-        */
     }
 }

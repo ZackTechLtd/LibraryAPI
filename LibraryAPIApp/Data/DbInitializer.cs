@@ -5,51 +5,104 @@ namespace LibraryAPIApp.Data
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Logging;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.Security.Claims;
     using Microsoft.Extensions.Options;
     using DataAccess.IdentityModels;
 
     public class DbInitializer
     {
-        public static async Task Initialize(IdentityDb context, string[] defaultAdmins, UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager, ILogger<DbInitializer> logger, IOptions<IdentityOptions> optionsAccessor, string environmentName)
+        public static async Task Initialize(IdentityDb context, string[] defaultAdmins, string defaultAdminPassword,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager, ILogger<DbInitializer> logger, IOptions<IdentityOptions> optionsAccessor,
+            string environmentName,
+            string companySeedCode, string companySeedName, string branchSeedCode, string branchSeedName)
         {
             context.Database.EnsureCreated();
 
-            
-                //Look for any users.
+            // Ensure the legacy Company/Branch schema is populated (idempotent).
+            Company company = EnsureCompany(context, companySeedCode, companySeedName);
+            Branch branch = EnsureBranch(context, company, branchSeedCode, branchSeedName);
+
+            // Look for any users.
              if (context.Users.Any())
              {
+                // Assign the config-listed admins to the seeded company/branch if they have none.
+                await AssignCompanyBranchToAdmins(context, defaultAdmins, company.CompanyId, branch.BranchId);
                 return; // DB has been seeded
              }
 
-             await CreateDefaultUserAndRoleForApplication(defaultAdmins, userManager, roleManager, logger, optionsAccessor);
-           
+             await CreateDefaultUserAndRoleForApplication(defaultAdmins, defaultAdminPassword, userManager, roleManager, logger, optionsAccessor, company.CompanyId, branch.BranchId);
         }
 
-        private static async Task CreateDefaultUserAndRoleForApplication(string[] defaultAdmins, UserManager<ApplicationUser> um, RoleManager<IdentityRole> rm, ILogger<DbInitializer> logger, IOptions<IdentityOptions> optionsAccessor)
+        private static Company EnsureCompany(IdentityDb context, string companyCode, string companyName)
+        {
+            var company = context.Companies.FirstOrDefault(x => x.CompanyCode == companyCode);
+            if (company == null)
+            {
+                company = new Company { CompanyCode = companyCode, CompanyName = companyName };
+                context.Companies.Add(company);
+                context.SaveChanges();
+            }
+
+            return company;
+        }
+
+        private static Branch EnsureBranch(IdentityDb context, Company company, string branchCode, string branchName)
+        {
+            var branch = context.Branches.FirstOrDefault(x => x.BranchCode == branchCode);
+            if (branch == null)
+            {
+                branch = new Branch { CompanyId = company.CompanyId, BranchCode = branchCode, BranchName = branchName };
+                context.Branches.Add(branch);
+                context.SaveChanges();
+            }
+
+            return branch;
+        }
+
+        private static async Task AssignCompanyBranchToAdmins(IdentityDb context, string[] defaultAdmins, int companyId, int branchId)
+        {
+            var changed = false;
+
+            foreach (string email in defaultAdmins)
+            {
+                var user = context.Users.FirstOrDefault(x => x.NormalizedEmail == email.ToUpperInvariant() || x.NormalizedUserName == email.ToUpperInvariant());
+                if (user == null)
+                {
+                    continue;
+                }
+
+                if (user.CompanyId == null || user.CompanyId < 1)
+                {
+                    user.CompanyId = companyId;
+                    changed = true;
+                }
+
+                if (user.BranchId == null || user.BranchId < 1)
+                {
+                    user.BranchId = branchId;
+                    changed = true;
+                }
+            }
+
+            if (changed)
+            {
+                await context.SaveChangesAsync();
+            }
+        }
+
+        private static async Task CreateDefaultUserAndRoleForApplication(string[] defaultAdmins, string defaultAdminPassword,
+            UserManager<ApplicationUser> um, RoleManager<IdentityRole> rm, ILogger<DbInitializer> logger, IOptions<IdentityOptions> optionsAccessor, int companyId, int branchId)
         {
             string[] appRoles = { "Administrator", "Librarian", "User" };
             await CreateDefaultRoles(rm, logger, appRoles);
             foreach(string email in defaultAdmins)
             {
-                var user = await CreateDefaultUser(um, logger, email);
-                await SetPasswordForDefaultUser(um, logger, email, user);
+                var user = await CreateDefaultUser(um, logger, email, companyId, branchId);
+                await SetPasswordForDefaultUser(um, logger, email, defaultAdminPassword, user);
                 await AddDefaultRoleToDefaultUser(um, logger, email, appRoles[0], user);
             }
-            
-            var adminrole = await rm.FindByNameAsync(appRoles[0]);
-
-            //string[] claims = { "usermanagerview", "usermanageredit", "companyview", "companyedit", "branchview", "branchedit" };
-            //foreach(string claim in claims)
-            //{
-            //    await rm.AddClaimAsync(adminrole, new System.Security.Claims.Claim(ClaimTypes.Role, claim));
-            //}
-            
-            
         }
 
         private static async Task CreateDefaultRoles(RoleManager<IdentityRole> rm, ILogger<DbInitializer> logger, string[] roles)
@@ -68,16 +121,13 @@ namespace LibraryAPIApp.Data
                     logger.LogError(exception, GetIdentiryErrorsInCommaSeperatedList(ir));
                     throw exception;
                 }
-
             }
-            
         }
 
-        private static async Task<ApplicationUser> CreateDefaultUser(UserManager<ApplicationUser> um, ILogger<DbInitializer> logger, string email)
+        private static async Task<ApplicationUser> CreateDefaultUser(UserManager<ApplicationUser> um, ILogger<DbInitializer> logger, string email, int companyId, int branchId)
         {
             logger.LogInformation($"Create default user with email `{email}` for application");
-            var user = new ApplicationUser { UserName = email, Email = email, PhoneNumber = "07554459413", LockoutEnabled = false };
-            //var user = new ApplicationUser(email, "First", "Last", new DateTime(1970, 1, 1));
+            var user = new ApplicationUser { UserName = email, Email = email, PhoneNumber = "07554459413", LockoutEnabled = false, CompanyId = companyId, BranchId = branchId };
 
             var ir = await um.CreateAsync(user);
             if (ir.Succeeded)
@@ -95,14 +145,13 @@ namespace LibraryAPIApp.Data
             return createdUser;
         }
 
-        private static async Task SetPasswordForDefaultUser(UserManager<ApplicationUser> um, ILogger<DbInitializer> logger, string email, ApplicationUser user)
+        private static async Task SetPasswordForDefaultUser(UserManager<ApplicationUser> um, ILogger<DbInitializer> logger, string email, string password, ApplicationUser user)
         {
             logger.LogInformation($"Set password for default user `{email}`");
-            const string password = "Password123@";
             var ir = await um.AddPasswordAsync(user, password);
             if (ir.Succeeded)
             {
-                logger.LogTrace($"Set password `{password}` for default user `{email}` successfully");
+                logger.LogTrace($"Set password for default user `{email}` successfully");
             }
             else
             {
