@@ -2,7 +2,6 @@ using Common.Configuration;
 using DataAccess.IdentityModels;
 using LibraryAPIApp;
 using LibraryAPIApp.Data;
-using LibraryAPIApp.Util;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;

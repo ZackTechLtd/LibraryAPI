@@ -6,10 +6,7 @@ using DataAccess.WebApiRepository.Interfaces;
 using DataAccess.WebApiRepository.Repository;
 using LibraryAPIApp.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using MediatR;
 
 namespace LibraryAPIApp
 {
